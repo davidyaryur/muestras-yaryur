@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- This tag helps color the browser UI on mobile -->
+    <meta name="theme-color" content="#242424">
+    <title>Visor de Modelo 3D</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google's Model Viewer Component -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+    <style>
+        /* Set the background for the entire page */
+        body {
+            background-color: #242424;
+            /* Prevent scrolling/bouncing on mobile */
+            overscroll-behavior: none;
+        }
+
+        /* Custom style for the AR button */
+        .ar-button {
+            background-color: #f0f0f0; /* Light gray background */
+            border-radius: 8px;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            color: #242424; /* Dark text */
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            padding: 12px 16px;
+            /* No longer needs absolute positioning */
+        }
+    </style>
+</head>
+<body class="font-sans">
+
+    <!-- Main container uses flex-col to stack header and viewer vertically -->
+    <main class="flex flex-col w-screen h-screen">
+        
+        <!-- Header section to contain the button -->
+        <header class="flex-shrink-0 flex justify-center items-center p-4 bg-[#242424]">
+            <!-- The AR button is now inside the header -->
+            <button id="ar-button-custom" class="ar-button">
+                Ver en AR
+            </button>
+        </header>
+
+        <!-- The model viewer container grows to fill the remaining space -->
+        <div class="flex-grow w-full h-full">
+            <model-viewer 
+                id="viewer"
+                src="https://raw.githubusercontent.com/davidyaryur/muestras-yaryur/main/100904152037.glb"
+                alt="Cartón 1.5mm"
+                shadow-intensity="1.5"
+                environment-image="neutral"
+                ar
+                ar-placement="floor"
+                ar-modes="webxr scene-viewer quick-look"
+                camera-controls
+                auto-rotate
+                class="w-full h-full"
+                style="background-color: #242424;">
+                
+                <!-- The default AR button is now hidden, we use our custom one -->
+                <button slot="ar-button" style="display: none;"></button>
+
+            </model-viewer>
+        </div>
+    </main>
+
+    <script>
+        // JavaScript to link our custom button to the model-viewer's AR functionality
+        const modelViewer = document.querySelector('#viewer');
+        const arButton = document.querySelector('#ar-button-custom');
+
+        arButton.addEventListener('click', () => {
+            modelViewer.activateAR();
+        });
+    </script>
+
+</body>
+</html>
