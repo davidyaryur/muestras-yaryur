@@ -1,85 +1,126 @@
-<!DOCTYPE html>
+<!          INVERSIONES YAR-YUR
+<!   VISUAL INTERACTIVO MUESTRAS YAR-YUR
+<!
+<!        Descargua este archivo
+<!   y ábrelo con cualquier explorador
+<!   (Chrome, Firefox, Edge, Opera...)
+<!
+<!  Espera unos instantes a que se cargue 
+<!   y podrás interactuar con el visual
+<!
+<! Podrás hacer zoom, mover y girar el visual
+<! para observarlo desde cualquier perspectiva
+<!
+<!      En un dispositivo móvil:
+<!   1. Con un sólo dedo giras el visual 
+<!   2. Con dos dedos trasladas el visual
+<!   4. Con tres dedos mueves la luz
+<!   5. Pellizca para hacer zoom
+<!
+<!     En un ordenador:
+<!   1. Click y arrastrar giras el visual 
+<!   2. SHIFT+click y arrastrar trasladas el visual
+<!      (o simplemente click derecho y arrastrar)
+<!   4. ALT+click y arrastrar mueves la luz
+<!   5. CTRL+click y arrastrar para hacer zoom
+<!      (o con la ruedita del mouse)
+<!
+<!
+<!
+<!      YAR-YUR TU ALIADO EN SOLUCIONES
+<!     PUBLICITARIAS PARA PUNTOS DE VENTA
+<!
+<!
+<!
+<!
+<!
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- This tag helps color the browser UI on mobile -->
-    <meta name="theme-color" content="#242424">
-    <title>Visor de Modelo 3D</title>
-    
-    <!-- Tailwind CSS for styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google's Model Viewer Component -->
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-
+    <title>Muestras Yar-Yur</title>
     <style>
-        /* Set the background for the entire page */
-        body {
-            background-color: #242424;
-            /* Prevent scrolling/bouncing on mobile */
-            overscroll-behavior: none;
+        body { background-color: rgb(36, 36, 36); }
+        .container-wrapper-genially {
+            position: relative;
+            min-height: 400px;
+            max-width: 100%;
         }
 
-        /* Custom style for the AR button */
-        .ar-button {
-            background-color: #f0f0f0; /* Light gray background */
-            border-radius: 8px;
-            border: none;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            color: #242424; /* Dark text */
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            padding: 12px 16px;
-            /* No longer needs absolute positioning */
+        .loader-genially {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10%;
+        }
+
+        .genially-embed {
+            margin: 0px auto;
+            position: relative;
+            height: auto;
+            width: 100%;
+        }
+        #horizontalContent, #verticalContent {
+            display: none;
         }
     </style>
 </head>
-<body class="font-sans">
+<body>
 
-    <!-- Main container uses flex-col to stack header and viewer vertically -->
-    <main class="flex flex-col w-screen h-screen">
-        
-        <!-- Header section to contain the button -->
-        <header class="flex-shrink-0 flex justify-center items-center p-4 bg-[#242424]">
-            <!-- The AR button is now inside the header -->
-            <button id="ar-button-custom" class="ar-button">
-                Ver en AR
-            </button>
-        </header>
-
-        <!-- The model viewer container grows to fill the remaining space -->
-        <div class="flex-grow w-full h-full">
-            <model-viewer 
-                id="viewer"
-                src="https://raw.githubusercontent.com/davidyaryur/muestras-yaryur/main/100904152037.glb"
-                alt="Cartón 1.5mm"
-                shadow-intensity="1.5"
-                environment-image="neutral"
-                ar
-                ar-placement="floor"
-                ar-modes="webxr scene-viewer quick-look"
-                camera-controls
-                auto-rotate
-                class="w-full h-full"
-                style="background-color: #242424;">
-                
-                <!-- The default AR button is now hidden, we use our custom one -->
-                <button slot="ar-button" style="display: none;"></button>
-
-            </model-viewer>
+    <div id="horizontalContent">
+        <div class="container-wrapper-genially" style="position: relative; min-height: 400px; max-width: 100%; background-color: rgb(36, 36, 36);">
+            <video class="loader-genially" autoplay="autoplay" loop="loop" playsinline="playsInline" muted="muted">
+                <source src="https://video.wixstatic.com/video/427cb9_f62a44e23b62450a9f06f21857782b12/144p/mp4/file.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+            <div id="68c30fb00e8b48d9973174b7" class="genially-embed"></div>
         </div>
-    </main>
+    </div>
+
+    <div id="verticalContent">
+        <div class="container-wrapper-genially" style="position: relative; min-height: 400px; max-width: 100%; background-color: rgb(36, 36, 36);">
+            <video class="loader-genially" autoplay="autoplay" loop="loop" playsinline="playsInline" muted="muted">
+                <source src="https://video.wixstatic.com/video/427cb9_f62a44e23b62450a9f06f21857782b12/144p/mp4/file.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+            <div id="68c31eb201fca9767de7b180" class="genially-embed"></div>
+        </div>
+    </div>
 
     <script>
-        // JavaScript to link our custom button to the model-viewer's AR functionality
-        const modelViewer = document.querySelector('#viewer');
-        const arButton = document.querySelector('#ar-button-custom');
+        (function (d) {
+            var js, id = "genially-embed-js", ref = d.getElementsByTagName("script")[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement("script");
+            js.id = id;
+            js.async = true;
+            js.src = "https://view.genially.com/static/embed/embed.js";
+            ref.parentNode.insertBefore(js, ref);
+        }(document));
 
-        arButton.addEventListener('click', () => {
-            modelViewer.activateAR();
-        });
+
+        function checkOrientation() {
+            const horizontalContent = document.getElementById('horizontalContent');
+            const verticalContent = document.getElementById('verticalContent');
+
+            if (window.matchMedia("(orientation: landscape)").matches) {
+                horizontalContent.style.display = 'block';
+                verticalContent.style.display = 'none';
+            } else {
+                horizontalContent.style.display = 'none';
+                verticalContent.style.display = 'block';
+            }
+        }
+
+        window.onload = function() {
+            checkOrientation();
+            window.addEventListener('resize', checkOrientation);
+        };
+
+
     </script>
 
 </body>
